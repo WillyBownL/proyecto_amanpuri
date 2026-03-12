@@ -1,0 +1,60 @@
+---
+interface Testimonial {
+  quote: string;
+  name: string;
+  location: string;
+  initials: string;
+}
+
+const testimonials: Testimonial[] = [
+  {
+    quote: "Virginia cambió mi vida. Después de años con ansiedad, encontré paz. Su profesionalismo me hizo sentir segura.",
+    name: "María C.",
+    location: "Copiapó",
+    initials: "MC",
+  },
+  {
+    quote: "Las sesiones de Reiki son mágicas. Noté cambios desde la primera. Mi estrés bajó y duermo mejor.",
+    name: "Juan Pablo R.",
+    location: "Tierra Amarilla",
+    initials: "JP",
+  },
+  {
+    quote: "Profesional y empática. Me ayudó a superar bloqueos emocionales. Totalmente recomendada.",
+    name: "Patricia S.",
+    location: "Caldera",
+    initials: "PS",
+  },
+];
+---
+
+<section class="py-32 relative" style="background: linear-gradient(135deg, var(--sage), var(--lavender));">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-20 text-white">
+      <span class="text-sm uppercase tracking-widest">Testimonios</span>
+      <div class="w-20 h-1 mx-auto my-4 bg-white"></div>
+      <h2 class="text-5xl md:text-6xl font-light">Lo que Dicen Nuestros Clientes</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      {testimonials.map((t, i) => (
+        <div class="testimonial-card">
+          <div class="flex mb-4">
+            {[...Array(5)].map(() => (
+              <i class="fas fa-star mr-1" style="color: var(--gold);"></i>
+            ))}
+          </div>
+          <p class="text-lg italic mb-6 relative z-10" style="color: var(--deep);">{t.quote}</p>
+          <div class="flex items-center">
+            <div class="w-14 h-14 rounded-full mr-4 flex items-center justify-center shrink-0" style="background: linear-gradient(135deg, var(--sage), var(--lavender));">
+              <span class="font-bold text-white">{t.initials}</span>
+            </div>
+            <div>
+              <p class="font-semibold" style="color: var(--deep);">{t.name}</p>
+              <p class="text-sm opacity-70" style="color: var(--deep);">{t.location}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

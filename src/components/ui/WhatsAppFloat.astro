@@ -1,0 +1,12 @@
+---
+interface Props {
+  phone?: string;
+}
+
+const { phone = '569XXXXXXXX' } = Astro.props;
+const whatsappUrl = `https://wa.me/${phone.replace(/\D/g, '')}`;
+---
+
+<a href={whatsappUrl} class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+  <i class="fab fa-whatsapp text-white text-4xl"></i>
+</a>

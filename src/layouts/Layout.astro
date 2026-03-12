@@ -1,0 +1,69 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = 'Amanpuri - Centro de Sanación Holística', description = 'Centro de Sanación Holística en Tierra Amarilla, Atacama. Reiki, sanación energética y bienestar integral.' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet" />
+  </head>
+  <body>
+    <slot />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => {
+        if (typeof AOS !== 'undefined') {
+          AOS.init({ duration: 1000, once: true, offset: 100 });
+        }
+        const hideLoader = () => {
+          setTimeout(() => {
+            const loader = document.querySelector('.loader');
+            if (loader) loader.classList.add('hidden');
+          }, 800);
+        };
+        if (document.readyState === 'complete') hideLoader();
+        else window.addEventListener('load', hideLoader);
+        window.addEventListener('scroll', () => {
+          const progress = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+          const progressBar = document.querySelector('.scroll-progress');
+          if (progressBar) progressBar.style.width = progress + '%';
+          const nav = document.querySelector('nav');
+          if (nav) nav.classList.toggle('scrolled', window.scrollY > 100);
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+          a.addEventListener('click', (e) => {
+            const href = a.getAttribute('href');
+            if (href && href !== '#') {
+              e.preventDefault();
+              const target = document.querySelector(href);
+              if (target) target.scrollIntoView({ behavior: 'smooth' });
+            }
+          });
+        });
+        const form = document.querySelector('form');
+        if (form) {
+          form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('¡Gracias! Te contactaremos pronto.');
+            form.reset();
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

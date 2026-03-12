@@ -1,0 +1,11 @@
+---
+interface Props {
+  id?: string;
+}
+
+const { id = 'loader' } = Astro.props;
+---
+
+<div class="loader" id={id}>
+  <div class="loader-ring"></div>
+</div>
