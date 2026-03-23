@@ -22,6 +22,11 @@ body {
   overflow-x: hidden;
 }
 
+main {
+  width: 100%;
+  max-width: 100%;
+}
+
 h1, h2, h3, h4, h5 {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 400;
@@ -118,6 +123,18 @@ nav.scrolled {
   transition: all 0.4s;
 }
 .service-card:hover .service-icon {
+  transform: rotate(360deg) scale(1.1);
+}
+
+.service-card-bg {
+  box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+  transition: all 0.5s;
+}
+.service-card-bg:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 60px rgba(139, 157, 131, 0.2);
+}
+.service-card-bg:hover .service-icon {
   transform: rotate(360deg) scale(1.1);
 }
 

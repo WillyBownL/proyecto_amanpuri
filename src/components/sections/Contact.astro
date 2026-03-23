@@ -7,9 +7,9 @@ interface Props {
 }
 
 const { 
-  whatsapp = '569XXXXXXXX', 
-  instagram = 'https://instagram.com/amanpuri',
-  phone = '+56 9 XXXX XXXX',
+  whatsapp = '+569 7196 3263', 
+  instagram = 'https://www.instagram.com/amanpuri2022/',
+  phone = '+569 7196 3263',
   email = 'contacto@amanpuri.cl'
 } = Astro.props;
 const whatsappUrl = `https://wa.me/${whatsapp.replace(/\D/g, '')}`;
@@ -31,7 +31,7 @@ const whatsappUrl = `https://wa.me/${whatsapp.replace(/\D/g, '')}`;
             </div>
             <div>
               <h4 class="font-medium mb-1" style="color: var(--deep);">Ubicación</h4>
-              <p style="color: var(--deep); opacity: 0.7;">Tierra Amarilla, Atacama</p>
+              <p style="color: var(--deep); opacity: 0.7;">Callejón Esmeralda 10, Tierra Amarilla, Atacama</p>
             </div>
           </div>
           <div class="flex items-start">
@@ -53,33 +53,33 @@ const whatsappUrl = `https://wa.me/${whatsapp.replace(/\D/g, '')}`;
             </div>
           </div>
         </div>
-        
-        <div class="flex gap-4">
-          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" class="bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-600 transition flex items-center">
-            <i class="fab fa-whatsapp mr-2 text-xl"></i>WhatsApp
-          </a>
-          <a href={instagram} target="_blank" rel="noopener noreferrer" class="bg-pink-500 text-white px-6 py-3 rounded-full hover:bg-pink-600 transition flex items-center">
-            <i class="fab fa-instagram mr-2 text-xl"></i>Instagram
-          </a>
-        </div>
       </div>
 
-      <div class="glass-card rounded-3xl p-10">
-        <h3 class="text-3xl font-light mb-8" style="color: var(--deep);">Agenda tu Consulta Gratuita</h3>
-        <form class="space-y-6">
-          <input type="text" placeholder="Nombre Completo *" class="form-input" required />
-          <input type="email" placeholder="Email *" class="form-input" required />
-          <input type="tel" placeholder="Teléfono *" class="form-input" required />
-          <select class="form-input">
-            <option>Terapia de Reiki</option>
-            <option>Sanación Energética</option>
-            <option>Consultoría</option>
-            <option>Paquetes</option>
-          </select>
-          <textarea rows="4" placeholder="Tu mensaje..." class="form-input"></textarea>
-          <button type="submit" class="btn-primary w-full"><i class="fas fa-paper-plane mr-2"></i>Enviar</button>
-          <p class="text-sm text-center opacity-70" style="color: var(--deep);">Responderemos en menos de 24 horas</p>
-        </form>
+      <div class="glass-card rounded-3xl p-6 overflow-hidden flex flex-col">
+        <div class="w-full aspect-[4/3] min-h-[280px] rounded-2xl overflow-hidden mb-6">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113313.86633076066!2d-70.37982106093754!3d-27.436293050039055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96981b866e8af441%3A0x1b2b57fc0c0b2572!2sAmanpuri!5e0!3m2!1ses!2scl!4v1774243598180!5m2!1ses!2scl" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Ubicación de Amanpuri en Google Maps"
+          ></iframe>
+        </div>
+        <h3 class="text-2xl font-light mb-2 text-center" style="color: var(--deep);">Agenda tu Consulta Gratuita</h3>
+        <p class="mb-6 text-center text-sm" style="color: var(--deep); opacity: 0.8;">Contáctanos directamente por WhatsApp o Instagram</p>
+        <div class="flex flex-col sm:flex-row gap-4 w-full justify-center">
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#20bd5a] transition text-lg">
+            <i class="fab fa-whatsapp text-3xl"></i>
+            <span>WhatsApp</span>
+          </a>
+          <a href={instagram} target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-3 text-white px-8 py-4 rounded-full font-semibold hover:opacity-90 transition text-lg" style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366);">
+            <i class="fab fa-instagram text-3xl"></i>
+            <span>Instagram</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
