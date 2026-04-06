@@ -27,6 +27,23 @@ main {
   max-width: 100%;
 }
 
+/* Contenido debajo del hero - mejor visibilidad (ensanchado ~10%) */
+main section:not(#inicio),
+footer {
+  font-weight: 500;
+  font-size: 110%;
+}
+main section:not(#inicio) p,
+main section:not(#inicio) span,
+main section:not(#inicio) li,
+main section:not(#inicio) a:not(.btn-primary):not(.nav-link),
+footer p,
+footer span,
+footer li,
+footer a {
+  font-weight: 500;
+}
+
 h1, h2, h3, h4, h5 {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 400;

@@ -1,4 +1,9 @@
 ---
+const heroImages = [
+  { src: '/hero-1.png', alt: 'Amanpuri — tinaja y espacio de bienestar' },
+  { src: '/hero-2.png', alt: 'Amanpuri — interior y camas de cuarzo' },
+  { src: '/hero-3.png', alt: 'Amanpuri — collage de servicios' },
+];
 ---
 
 <section id="inicio" class="hero relative min-h-screen flex items-center">
@@ -15,7 +20,7 @@
         </h1>
         <div class="w-20 h-1 mb-8" style="background: var(--gold);"></div>
         <p class="text-lg md:text-xl text-white mb-10 leading-relaxed opacity-95 max-w-lg">
-          Masajes de relajación, camas de cuarzo, sauna seco, tinajas, reiki, lecturas de tarot y talleres en un espacio seguro, humano y profesional.
+          Masajes de relajación, camas de cuarzo, sauna seco, tinajas, reiki, lecturas de tarot y taller de tarot en un espacio seguro, humano y profesional.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 mb-12">
           <a href="#contacto" class="btn-primary text-center"><i class="fas fa-calendar-check mr-2"></i>Reserva tu sesión</a>
@@ -36,9 +41,58 @@
           </div>
         </div>
       </div>
-      <div class="hidden md:block floating">
-        <img src="/hero-image.jpg" alt="Sanación en Amanpuri" class="rounded-3xl shadow-2xl w-full object-cover" />
+      <div class="hidden md:block floating w-full">
+        <div class="relative w-full aspect-[4/5] max-h-[min(85vh,640px)] rounded-3xl shadow-2xl overflow-hidden bg-black/10">
+          {heroImages.map((img, i) => (
+            <img
+              src={img.src}
+              alt={img.alt}
+              class:list={[
+                'hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out',
+                i === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0',
+              ]}
+              data-hero-slide
+              loading={i === 0 ? 'eager' : 'lazy'}
+              fetchpriority={i === 0 ? 'high' : undefined}
+              decoding="async"
+            />
+          ))}
+          <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-2" aria-hidden="true">
+            {heroImages.map((_, i) => (
+              <span class:list={['hero-dot h-2 rounded-full transition-all duration-300', i === 0 ? 'w-6 bg-white' : 'w-2 bg-white/40']} data-hero-dot />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<script is:inline>
+  (function () {
+    const INTERVAL_MS = 5500;
+    const slides = document.querySelectorAll('[data-hero-slide]');
+    const dots = document.querySelectorAll('[data-hero-dot]');
+    if (!slides.length) return;
+
+    let i = 0;
+    function go(n) {
+      slides.forEach((el, j) => {
+        el.classList.toggle('opacity-100', j === n);
+        el.classList.toggle('opacity-0', j !== n);
+        el.classList.toggle('z-10', j === n);
+        el.classList.toggle('z-0', j !== n);
+      });
+      dots.forEach((d, j) => {
+        d.classList.toggle('w-6', j === n);
+        d.classList.toggle('w-2', j !== n);
+        d.classList.toggle('bg-white', j === n);
+        d.classList.toggle('bg-white/40', j !== n);
+      });
+    }
+    setInterval(function () {
+      i = (i + 1) % slides.length;
+      go(i);
+    }, INTERVAL_MS);
+  })();
+</script>
